@@ -28,5 +28,6 @@ public class HorizontalStackLayoutPage : Component
                 )
                 .Margin(20)
                 .HCenter()
-            );
+            )
+            .Title("Horizontal StackLayout demo");
 }

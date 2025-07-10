@@ -27,5 +27,6 @@ public class VerticalStackLayoutPage : Component
                     .Color(Colors.Purple)
                     .HeightRequest(40)
                 ).Margin(20)
-        );
+        )
+        .Title("Vertical StackLayout demo");
 }

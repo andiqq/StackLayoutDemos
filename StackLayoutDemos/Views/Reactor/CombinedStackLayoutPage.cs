@@ -89,5 +89,6 @@ public class CombinedStackLayoutPage : Component
                         .Padding(5)
                 )
                 .Margin(20)
-        );
+        )
+        .Title("Combined StackLayouts demo");
 }

@@ -30,5 +30,6 @@ public class StackLayoutSpacingPage : Component
             )
             .Margin(20)
             .Spacing(6)
-        );
+        )
+        .Title("StackLayout Spacing demo");
 }

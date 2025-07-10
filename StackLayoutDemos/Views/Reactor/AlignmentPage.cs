@@ -22,5 +22,6 @@ public class AlignmentPage : Component
             )
             .Margin(20)
             .Spacing(6)
-        );
+        )
+        .Title("AlignmentDemo");
 }
