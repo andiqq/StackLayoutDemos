@@ -1,16 +1,13 @@
-﻿using System.Reflection;
-using System.Windows.Input;
-using StackLayoutDemos.Views.Reactor;
+﻿using System.Windows.Input;
 using MauiReactor;
 using ContentPage = Microsoft.Maui.Controls.ContentPage;
 using Page = Microsoft.Maui.Controls.Page;
 
-namespace StackLayoutDemos;
+namespace StackLayoutDemos.Views.XAML;
 
 public partial class MainPage : ContentPage
 {
     public ICommand NavigateCommand { get; private set; }
-    public ICommand NavigateReactorCommand { get; private set; }
 
     public MainPage()
     {

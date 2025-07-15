@@ -4,30 +4,23 @@ namespace StackLayoutDemos.Views.Reactor;
 
 public class HorizontalStackLayoutPage : Component
 {
-    public override VisualNode Render() 
+    public override VisualNode Render()
         => ContentPage(
-            HStack(
-                BoxView()
-                    .Color(Colors.Red)
-                    .WidthRequest(40),
-                BoxView()
-                    .Color(Colors.Yellow)
-                    .WidthRequest(40),
-                BoxView()
-                    .Color(Colors.Blue)
-                    .WidthRequest(40),
-                BoxView()
-                    .Color(Colors.Green)
-                    .WidthRequest(40),
-                BoxView()
-                    .Color(Colors.Orange)
-                    .WidthRequest(40),
-                BoxView()
-                    .Color(Colors.Purple)
-                    .WidthRequest(40)
-                )
-                .Margin(20)
-                .HCenter()
-            )
-            .Title("Horizontal StackLayout demo");
+            VStack(
+                Label("Primary Colors"),
+                Box(Colors.Red),
+                Box(Colors.Yellow),
+                Box(Colors.Blue),
+                Label("Secondary Colors"),
+                Box(Colors.Green),
+                Box(Colors.Orange),
+                Box(Colors.Purple)
+            ).Margin(20)
+        ).Title("Horizontal StackLayout demo");
+
+    private static MauiReactor.BoxView Box(Color color)
+        => new MauiReactor.BoxView()
+            .Color(color)
+            .WidthRequest(40);
+            
 }

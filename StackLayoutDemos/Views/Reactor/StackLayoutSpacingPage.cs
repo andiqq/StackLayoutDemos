@@ -8,28 +8,21 @@ public class StackLayoutSpacingPage : Component
         => ContentPage(
             StackLayout(
                 Label("Primary Colors"),
-                BoxView()
-                    .Color(Colors.Red)
-                    .HeightRequest(40),
-                BoxView()
-                    .Color(Colors.Yellow)
-                    .HeightRequest(40),
-                BoxView()
-                    .Color(Colors.Blue)
-                    .HeightRequest(40),
+                Box(Colors.Red),
+                Box(Colors.Yellow),
+                Box(Colors.Blue),
                 Label("Secondary Colors"),
-                BoxView()
-                    .Color(Colors.Green)
-                    .HeightRequest(40),
-                BoxView()
-                    .Color(Colors.Orange)
-                    .HeightRequest(40),
-                BoxView()
-                    .Color(Colors.Purple)
-                    .HeightRequest(40)
-            )
+                Box(Colors.Green),
+                Box(Colors.Orange),
+                Box(Colors.Purple)
+                )
             .Margin(20)
             .Spacing(6)
         )
         .Title("StackLayout Spacing demo");
+    
+    private static MauiReactor.BoxView Box(Color color)
+        => new MauiReactor.BoxView()
+            .Color(color)
+            .HeightRequest(40);
 }

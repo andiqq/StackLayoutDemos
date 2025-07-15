@@ -5,9 +5,9 @@
              xmlns:codeViews="clr-namespace:StackLayoutDemos.Views.Code"
              xmlns:reactorViews="clr-namespace:StackLayoutDemos.Views.Reactor"
              xmlns:MauiReactor="clr-namespace:MauiReactor.Integration;assembly=MauiReactor"
-             x:Class="StackLayoutDemos.MainPage"
+             x:Class="StackLayoutDemos.Views.XAML.MainPage"
              Title="StackLayout demos"
-             x:DataType="local:MainPage">
+             x:DataType="views:MainPage">
     <VerticalStackLayout Padding="10">
        
         <MauiReactor:ComponentHost 

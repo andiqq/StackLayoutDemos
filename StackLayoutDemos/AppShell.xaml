@@ -6,13 +6,14 @@
     xmlns:local="clr-namespace:StackLayoutDemos"
     xmlns:reactorViews="clr-namespace:StackLayoutDemos.Views.Reactor"
     xmlns:MauiReactor="clr-namespace:MauiReactor.Integration;assembly=MauiReactor"
+    xmlns:xaml="clr-namespace:StackLayoutDemos.Views.XAML"
     Shell.FlyoutBehavior="Disabled">
     
     <TabBar>
         <Tab Title="Home">
             <ShellContent Title="MainPage"
                           Route="MainPage"
-                          ContentTemplate="{DataTemplate local:MainPage}" />
+                          ContentTemplate="{DataTemplate xaml:MainPage}" />
         </Tab>
         
         <!-- Your MauiReactor page -->

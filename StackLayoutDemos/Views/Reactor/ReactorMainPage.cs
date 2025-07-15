@@ -1,31 +1,45 @@
+using System.ComponentModel;
 using MauiReactor;
+using static Microsoft.Maui.Controls.Shell;
+using Component = MauiReactor.Component;
+using ContentPage = MauiReactor.ContentPage;
+
 
 namespace StackLayoutDemos.Views.Reactor;
 
+class Entry
+{
+    public string Header { get; set; } = string.Empty;
+    public string SubHeader { get; set; } = string.Empty;
+    public Component CPage { get; set; }
+}
+
 public class ReactorMainPage : Component
 {
+    private readonly List<(string Title, string Subtitle, string Route)> pages =
+    [
+        ("Default StackLayout", "Vertical", "vertical"),
+        ("Horizontal StackLayout", "Orientation Property", "horizontal"),
+        ("Child Spacing", "Spacing Property", "spacing"),
+        ("Combined StackLayouts", "Vertical and Horizontal", "combined"),
+        ("Alignment in a vertical StackLayout", "HorizontalOptions property", "alignment")
+    ];
+
     public override VisualNode Render()
         => VStack(
-            Label("MauiReactor component"),
+            Label("MauiReactor components")
+                .FontSize(12)
+                .TextColor(Colors.Gray),
             VStack(
-                Label("Default StackLayout").FontSize(18),
-                Label("Vertical").FontSize(12)
-            ).OnTapped(async () => { await Navigation.PushAsync<VerticalStackLayoutPage>(); }),
-            VStack(
-                Label("Horizontal StackLayout").FontSize(18),
-                Label("Orientation Property").FontSize(12)
-            ).OnTapped(async () => { await Navigation.PushAsync<HorizontalStackLayoutPage>(); }),
-            VStack(
-                Label("Child Spacing").FontSize(18),
-                Label("Spacing Property").FontSize(12)
-            ).OnTapped(async () => { await Navigation.PushAsync<StackLayoutSpacingPage>(); }),
-            VStack(
-                Label("Combined StackLayouts").FontSize(18),
-                Label("Vertical and Horizontal").FontSize(12)
-            ).OnTapped(async () => { await Navigation.PushAsync<CombinedStackLayoutPage>(); }),
-            VStack(
-                Label("Alignment in a vertical StackLayout").FontSize(18),
-                Label("HorizontalOptions property").FontSize(12)
-            ).OnTapped(async () => { await Navigation.PushAsync<AlignmentPage>(); })
-        );
+                pages.Select(page
+                    => VStack(
+                            Label(page.Title)
+                                .FontSize(18),
+                            Label(page.Subtitle)
+                                .FontSize(12)
+                                .TextColor(Colors.Gray)
+                        ).OnTapped(async () => await Current.GoToAsync(page.Route))
+                )
+            ).Spacing(10)
+        ).Spacing(10);
 }
