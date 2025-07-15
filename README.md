@@ -7,6 +7,7 @@ languages:
 - xaml
 products:
 - dotnet-maui
+- maui-reactor
 urlFragment: userinterface-stacklayout
 ---
 
