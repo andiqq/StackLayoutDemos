@@ -1,38 +1,40 @@
-﻿using System.Windows.Input;
+﻿using System.Reflection;
+using System.Windows.Input;
 using StackLayoutDemos.Views.Reactor;
 using MauiReactor;
 using ContentPage = Microsoft.Maui.Controls.ContentPage;
 using Page = Microsoft.Maui.Controls.Page;
 
-namespace StackLayoutDemos
+namespace StackLayoutDemos;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public ICommand NavigateCommand { get; private set; }
+    public ICommand NavigateReactorCommand { get; private set; }
+
+    public MainPage()
     {
-        public ICommand NavigateCommand { get; private set; }
-        public ICommand NavigateReactorCommand { get; private set; }
+        InitializeComponent();
 
-        public MainPage()
+        NavigateCommand = new Command<Type>(async void (pageType) =>
         {
-            InitializeComponent();
-
-            NavigateCommand = new Command<Type>(async void (pageType) =>
+            if (pageType.IsSubclassOf(typeof(Component)))
             {
-                if (pageType.IsSubclassOf(typeof(Component)))
-                {
-                    var pushAsync = typeof(NavigationExtensions)
-                        .GetMethod("PushAsync", [typeof(INavigation)])!
-                        .MakeGenericMethod(pageType);
+                await ((Task)typeof(NavigationExtensions)
+                    .GetMethod("PushAsync", [typeof(INavigation)])!
+                    .MakeGenericMethod(pageType).Invoke(null, [Navigation]))!;
+            }
+            else
+            {
+                Page page = (Page)Activator.CreateInstance(pageType);
+                await Navigation.PushAsync(page);
+            }
+        });
+        
 
-                    await ((Task)pushAsync.Invoke(null, [Navigation]))!;
-                }
-                else
-                {
-                    Page page = (Page)Activator.CreateInstance(pageType);
-                    await Navigation.PushAsync(page);
-                }
-            });
 
-            BindingContext = this;
-        }
+        BindingContext = this;
+        
     }
+    
 }

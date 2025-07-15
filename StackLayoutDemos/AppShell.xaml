@@ -4,11 +4,28 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:StackLayoutDemos"
+    xmlns:reactorViews="clr-namespace:StackLayoutDemos.Views.Reactor"
+    xmlns:MauiReactor="clr-namespace:MauiReactor.Integration;assembly=MauiReactor"
     Shell.FlyoutBehavior="Disabled">
-
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    
+    <TabBar>
+        <Tab Title="Home">
+            <ShellContent Title="MainPage"
+                          Route="MainPage"
+                          ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        
+        <!-- Your MauiReactor page -->
+        <Tab Title="Reactor">
+            <ShellContent Title="Reactor MainPage"
+                          Route="reactor">
+                <ContentPage Padding="10">
+                    <MauiReactor:ComponentHost 
+                        Component="{x:Type reactorViews:ReactorMainPage}"/>
+                </ContentPage>
+            </ShellContent>
+                          
+        </Tab>
+    </TabBar>
 
 </Shell>

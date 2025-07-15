@@ -4,10 +4,15 @@
              xmlns:views="clr-namespace:StackLayoutDemos.Views.XAML"
              xmlns:codeViews="clr-namespace:StackLayoutDemos.Views.Code"
              xmlns:reactorViews="clr-namespace:StackLayoutDemos.Views.Reactor"
+             xmlns:MauiReactor="clr-namespace:MauiReactor.Integration;assembly=MauiReactor"
              x:Class="StackLayoutDemos.MainPage"
              Title="StackLayout demos"
              x:DataType="local:MainPage">
-    <TableView Intent="Menu">
+    <VerticalStackLayout Padding="10">
+       
+        <MauiReactor:ComponentHost 
+            Component="{x:Type reactorViews:ReactorMainPage}"/>
+        <TableView Intent="Menu">
         <TableRoot>
             <TableSection Title="XAML">
                 <TextCell Text="Default StackLayout"
@@ -77,4 +82,5 @@
             </TableSection>
         </TableRoot>
     </TableView>
+    </VerticalStackLayout>
 </ContentPage>
