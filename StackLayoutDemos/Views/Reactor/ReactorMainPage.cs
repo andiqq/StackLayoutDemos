@@ -1,18 +1,8 @@
-using System.ComponentModel;
 using MauiReactor;
 using static Microsoft.Maui.Controls.Shell;
 using Component = MauiReactor.Component;
-using ContentPage = MauiReactor.ContentPage;
-
 
 namespace StackLayoutDemos.Views.Reactor;
-
-class Entry
-{
-    public string Header { get; set; } = string.Empty;
-    public string SubHeader { get; set; } = string.Empty;
-    public Component CPage { get; set; }
-}
 
 public class ReactorMainPage : Component
 {
